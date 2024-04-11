@@ -36,4 +36,17 @@ public class StudentController {
         return studentService.createStudent(student);
     }
 
+    @DeleteMapping( path = "/{studentId}")
+    public void deletedStudent (@PathVariable("studentId") Integer studentId) throws IllegalAccessException {
+        studentService.deleteStudent(studentId);
+    }
+
+    @PutMapping(path = "{studentId}")
+    public void updatedStudent(
+            @PathVariable("studentId") Integer studentId,
+            @RequestBody Student student
+    ) throws IllegalAccessException {
+        studentService.updateStudent(studentId, student.getName(), student.getEmail());
+    }
+
 }
